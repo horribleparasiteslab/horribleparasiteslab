@@ -391,11 +391,12 @@ footer{padding:30px 28px 50px; color:var(--muted); font-size:13px; text-align:ce
 </section>
 
 <div class="book" id="bookSection" style="cursor:pointer">
-  <div class="book-cover"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#8fa491" stroke-width="1.5"/><path d="M10 20 Q20 10 30 20 Q20 30 10 20" fill="none" stroke="#eab661" stroke-width="1.5"/></svg></div>
+  <div class="book-cover" style="flex-direction:column; gap:12px; padding:14px; text-align:center"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#8fa491" stroke-width="1.5"/><path d="M10 20 Q20 10 30 20 Q20 30 10 20" fill="none" stroke="#eab661" stroke-width="1.5"/></svg><div class="mono" style="font-size:12px; letter-spacing:.08em; line-height:1.35; color:var(--ink)">HORRIBLE<br>PARASITES</div><div class="mono" style="font-size:10px; letter-spacing:.08em; color:var(--muted)">D. FIELD</div></div>
   <div class="book-info">
     <div class="tag">FURTHER READING</div>
-    <h2>[Your Book Title Here]</h2>
-    <p>Add a description of your book here — what it covers, why a reader of this page would want it, and who wrote it. Replace this placeholder with your own copy.</p>
+    <h2>Horrible Parasites</h2>
+    <div class="tag" style="margin:-4px 0 14px">by D. Field</div>
+    <p>What if a worm could steer a mind, a bug could take the place of a fish’s tongue, and a fungus could turn an ant into a zombie? Meet 17 real parasites — from snails, frogs and ants to fish and even plants — and find out how they live, how they trick their hosts, and what scientists are learning from them.</p>
     <a class="btn" href="#" id="bookLink">Learn More</a>
   </div>
 </div>
@@ -509,21 +510,22 @@ footer{padding:30px 28px 50px; color:var(--muted); font-size:13px; text-align:ce
     <button class="close" id="bookClose">×</button>
     <div class="modal-body">
       <div class="tag mono">FURTHER READING</div>
-      <h2 style="font-size:28px">[Your Book Title Here]</h2>
+      <h2 style="font-size:28px">Horrible Parasites</h2>
+      <div class="tag mono" style="margin:-6px 0 14px">by D. Field</div>
       <div class="portrait" style="height:160px" id="bookPortrait"></div>
-      <p class="fact" style="margin-top:0">[A longer back-cover-style description goes here — what the book covers, who it's for, and why someone who just read this guide would want it. Two or three sentences works well.]</p>
+      <p class="fact" style="margin-top:0">What if a worm could steer a mind, a bug could take the place of a fish’s tongue, and a fungus could turn an ant into a zombie? Welcome to the world of parasites, nature’s sneakiest villains. In <i>Horrible Parasites</i>, meet 17 real parasites, from snails, frogs and ants to fish and even plants, and find out how they live, how they trick their hosts, and what scientists are learning from them.</p>
       <div class="player" style="margin-top:18px">
         <div class="player-label">WHAT'S INSIDE</div>
         <ul class="prev-steps" id="bookChapters">
-          <li class="show">[Chapter or section title placeholder]</li>
-          <li class="show">[Chapter or section title placeholder]</li>
-          <li class="show">[Chapter or section title placeholder]</li>
-          <li class="show">[Chapter or section title placeholder]</li>
+          <li class="show">17 real parasites — from snails, frogs and ants to fish and even plants</li>
+          <li class="show">How they live: the life cycles behind the horror</li>
+          <li class="show">How they trick their hosts — steering minds, replacing a fish’s tongue, zombifying ants</li>
+          <li class="show">What scientists are learning from them</li>
         </ul>
       </div>
       <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <a class="btn" href="#" id="bookBuyLink">Buy the Book</a>
-        <span class="lab-note" style="margin:0">[Author name/bio placeholder — tell me these details and I'll fill them in]</span>
+        <span class="lab-note" style="margin:0">Horrible Parasites — by D. Field</span>
       </div>
     </div>
   </div>
@@ -1175,6 +1177,10 @@ reset();
 (function(){
   const bEl=document.getElementById('bookSection'), bOv=document.getElementById('bookOverlay'), bClose=document.getElementById('bookClose');
   document.getElementById('bookPortrait').innerHTML = portraitHTML('leaf','#eab661',false);
+  /* Paste the book's purchase / publisher URL here to show the "Buy the Book" button. */
+  const BOOK_BUY_URL = '';
+  const buyEl = document.getElementById('bookBuyLink');
+  if(BOOK_BUY_URL){ buyEl.href = BOOK_BUY_URL; buyEl.target = '_blank'; buyEl.rel = 'noopener'; } else { buyEl.style.display = 'none'; }
   function open(e){ e.preventDefault(); bOv.classList.add('open'); }
   bEl.addEventListener('click',open);
   bClose.addEventListener('click',()=>bOv.classList.remove('open'));
